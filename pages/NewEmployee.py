@@ -2,6 +2,13 @@
 import streamlit as st
 import pandas as pd
 
+# Set the page configuration for the Streamlit application, including the title and icon.
+st.set_page_config(
+    page_title="Employee Management Database",
+    page_icon="📊",
+    layout="wide"
+)
+
 # Define a flag for checking if the user is logged in
 is_logged_in = False
 
@@ -51,13 +58,6 @@ if check_password():
 #######
 # App
 #######
-
-    # Set the page configuration for the Streamlit application, including the title and icon.
-    st.set_page_config(
-        page_title="Employee Management Database",
-        page_icon="📊",
-        layout="wide"
-    )
     
     # Display the Iberia Advisory image on the Streamlit application.
     st.image("./Images/iberia-logo.png")
