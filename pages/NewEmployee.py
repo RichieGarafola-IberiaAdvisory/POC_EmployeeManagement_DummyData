@@ -101,7 +101,7 @@ if check_password():
             'Certification Name': certification_name,
             'HubZone': hubzone
         }
-        new_employee_df = pd.DataFrame(new_employee, index=[0])
+        new_employee_df = pd.DataFrame([new_employee], columns=employees_df.columns)
         employees_df = pd.concat([employees_df, new_employee_df], ignore_index=True)
         st.success('Employee added successfully.')
     
