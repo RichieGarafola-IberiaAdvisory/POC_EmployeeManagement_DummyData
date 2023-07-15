@@ -2,6 +2,9 @@
 import streamlit as st
 import pandas as pd
 
+import base64
+from io import BytesIO
+
 # Set the page configuration for the Streamlit application, including the title and icon.
 st.set_page_config(
     page_title="Employee Management Database",
@@ -105,10 +108,23 @@ if check_password():
         employees_df = pd.concat([employees_df, new_employee_df], ignore_index=True)
         st.success('Employee added successfully.')
     
-    # Save the updated DataFrame to a CSV file
-    if st.button('Save Data'):
-        employees_df.to_csv('employees_data_updated.csv', index=False)
-        st.success('Data saved successfully.')
+    # # Save the updated DataFrame to a CSV file
+    # if st.button('Save Data'):
+    #     employees_df.to_csv('employees_data_updated.csv', index=False)
+    #     st.success('Data saved successfully.')
+
+    # Save button to CSV
+if st.button('Save Data to CSV'):
+    # Save the DataFrame to a CSV file in memory
+    csv_buffer = BytesIO()
+    employees_df.to_csv(csv_buffer, index=False)
+    csv_data = csv_buffer.getvalue()
+
+    # Generate a download link for the CSV file
+    b64 = base64.b64encode(csv_data).decode('utf-8')
+    href = f'<a href="data:text/csv;base64,{b64}" download="employees_data_updated.csv">Download CSV File</a>'
+    st.markdown(href, unsafe_allow_html=True)
+    st.success('Data saved successfully.')
     
     # Checkbox for viewing the database
     st.subheader('View Database')
