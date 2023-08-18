@@ -62,9 +62,6 @@ if check_password():
 # App
 #######
     
-    # Display the Iberia Advisory image on the Streamlit application.
-    st.image("./Images/iberia-logo.png")
-    
     # Load the data from the employee_data.csv file
     employees_df = pd.read_csv('./Resources/employees_data.csv')
     
