@@ -19,6 +19,9 @@ st.set_page_config(
     layout="wide"
 )
 
+# Display the Iberia Advisory image on the Streamlit application.
+st.image("./Images/iberia-logo.png")
+
 ################
 # AUTHENICATION
 ################
@@ -101,11 +104,6 @@ if check_password():
     # Define a flag for checking if the user is logged in
     is_logged_in = False
     
-    # Display the Iberia Advisory image on the Streamlit application.
-    st.image("./Images/iberia-logo.png")
-
-
-
 
     #######
     # App
