@@ -12,8 +12,7 @@ from openpyxl import Workbook
 
 # Set the page configuration for the Streamlit application, including the title and icon.
 st.set_page_config(
-    # page_title="Employee Management Database",
-    page_title="Local CSV Version",
+    page_title="Iberia Employee Management",
     page_icon="📊",
     layout="wide"
 )
