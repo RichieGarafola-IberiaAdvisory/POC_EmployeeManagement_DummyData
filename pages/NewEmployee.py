@@ -72,13 +72,8 @@ if check_password():
                         "Years of Experience", "Education Level", "Clearance Level",
                         "Origination Date", "Reinvestigation Date", "Certification Name", "HubZone"]
     
-    # # Initialize an empty DataFrame with expected headers
-    employees_df = pd.DataFrame(columns=expected_headers)
-    
-    # Initialize an empty DataFrame with expected headers using session state
-    if "employees_df" not in st.session_state:
-        st.session_state.employees_df = pd.DataFrame(columns=expected_headers)
-    
+    # Initialize an empty DataFrame with expected headers
+    st.session_state.employees_df = st.session_state.get("employees_df", pd.DataFrame(columns=expected_headers))
     
     # Upload data file
     uploaded_file = st.file_uploader("Upload CSV or Excel file with employee data", type=["csv", "xlsx"])
@@ -92,14 +87,13 @@ if check_password():
         # Check if the uploaded data has the expected headers
         if list(uploaded_data.columns) == expected_headers:
             # Append the uploaded data to the existing DataFrame
-            employees_df = pd.concat([employees_df, uploaded_data], ignore_index=True)
+            st.session_state.employees_df = pd.concat([st.session_state.employees_df, uploaded_data], ignore_index=True)
             st.success('Data uploaded successfully.')
         else:
             st.error('Uploaded data has different headers. Please check the file and try again.')
     else:
         # Create an empty DataFrame with the expected headers if no file is uploaded
         employees_df = pd.DataFrame(columns=expected_headers)
-    
     
     # Define a flag for checking if the user is logged in
     is_logged_in = False
@@ -116,7 +110,14 @@ if check_password():
     st.subheader('Add New Employee')
     name = st.text_input('Employee Name')
     date_joined = st.date_input('Date Joined')
-    terminate_date = st.date_input('Terminate Date')
+    
+    # Checkbox for termination status
+    terminated = st.checkbox('Terminated')
+    if terminated:
+        termination_date = st.date_input('Termination Date')
+    else:
+        termination_date = "NA"
+    
     veterans = st.selectbox('Veterans', ["NA", "Army", "Navy", "Air Force", "Marines", "Coast Guard"])
     supervisor = st.text_input('Supervisor')
     job_title = st.text_input('Job Title')
@@ -160,8 +161,7 @@ if check_password():
         
         
         # Add the new employee to the existing DataFrame
-        employees_df = pd.concat([employees_df, new_employee_df], ignore_index=True)
-        # employees_df = employees_df.append(new_employee_df, ignore_index=True)
+        st.session_state.employees_df = pd.concat([st.session_state.employees_df, pd.DataFrame([new_employee], columns=expected_headers)], ignore_index=True)
         st.success('Employee added successfully.')
         
     # Create two columns for saving the data
@@ -209,4 +209,4 @@ if check_password():
         
     if view_option:
         st.write('Employees')
-        st.dataframe(employees_df)
+        st.dataframe(st.session_state.employees_df)
