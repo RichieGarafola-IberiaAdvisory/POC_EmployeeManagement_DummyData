@@ -17,7 +17,6 @@ Iberia Employee Management is a comprehensive web application designed to simpli
   - [Data Filtering](#data-filtering)
   - [Data Export](#data-export)
   - [Data Visualization](#data-visualization)
-- [Customization](#customization)
 - [Support and Feedback](#support-and-feedback)
 
 
@@ -72,8 +71,6 @@ After applying filters, you can save the filtered data as CSV or Excel files. Us
 ### Data Visualization
 
 The application provides basic visualizations like bar charts and pie charts to help you analyze employee data. Charts are updated based on the applied filters.
-
-
 
 ### Support and Feedback
 
