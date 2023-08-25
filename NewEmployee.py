@@ -1,9 +1,16 @@
 # Import necessary libraries and modules
 import streamlit as st
 import pandas as pd
-
 import base64
 from io import BytesIO
+
+hide_streamlit_style = """
+            <style>
+            #MainMenu {visibility: hidden;}
+            footer {visibility: hidden;}
+            </style>
+            """
+st.markdown(hide_streamlit_style, unsafe_allow_html=True) 
 
 # Set the page configuration for the Streamlit application, including the title and icon.
 st.set_page_config(
