@@ -1,10 +1,3 @@
-###################################
-# Fix the following
-# 1. appended data for new employee is being over written
-# 2. add multiple employees to dataframe instead of individual
-##################################
-
-
 # Import necessary libraries and modules
 import streamlit as st
 import pandas as pd
