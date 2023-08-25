@@ -1,4 +1,4 @@
-https://iberiaemployeedatabase.streamlit.app/
+[https://iberiaemployeedatabase.streamlit.app/
 
 # Employee Management
 
@@ -18,186 +18,88 @@ Whether you are a small startup or a large enterprise, Employee Management offer
 - [Features](#Features)
 - [Contributing](#Contributing)
 
----
+# Iberia Employee Management Streamlit App
 
-## Installation
+This Streamlit application is designed to manage employee data for Iberia Advisory. It consists of two pages: 
 
-To run the Employee Management application locally, follow these steps:
+## Page 1 - Employee Data Management
 
-1. Clone this repository: `git clone https://github.com/RichieGarafola/EmployeeManagement.git`
-2. Navigate to the project directory: `cd EmployeeManagement`
-3. Install the dependencies: `npm install`
-4. Start the application: `npm start`
-5. Open your browser and visit: `http://localhost:3000`
+### Features:
 
----
+- **Authentication:** Users are required to enter a username and password to access the application.
+- **Data Upload:** Users can upload employee data in CSV or Excel format.
+- **Data Entry:** Users can add new employee records to the dataset.
+- **Data Filtering:** Users can filter employee data based on various criteria like contract project, work location, education level, clearance level, and more.
+- **Data Export:** Filtered data can be exported as CSV or Excel files.
+- **Data Visualization:** Basic data visualizations, including bar charts and pie charts, are provided to analyze employee data.
 
-## Instructions
+### Instructions:
 
-### Step 1: Install PostgreSQL:
+1. **Authentication:**
+   - Enter your username and password to access the application. If you don't have credentials, contact your system administrator.
 
-- Download and install PostgreSQL from the official website (https://www.postgresql.org/download/).
-- Follow the installation instructions specific to your operating system.
+2. **Data Upload:**
+   - Use the "Upload CSV or Excel file with employee data" button to upload employee data.
+   - Make sure the uploaded file follows the expected column headers.
 
----
+3. **Data Entry:**
+   - You can add new employees by filling out the input fields under "Add New Employee" and clicking the "Add Employee" button.
 
-### Step 2: Connect to PostgreSQL:
+4. **Data Filtering:**
+   - Use the sidebar filters to narrow down the employee dataset based on your criteria.
+   - You can filter by contract project, work location, education level, clearance level, and more.
+   - You can also search for employees by name or supervisor name.
 
-- Open a command prompt or terminal and connect to the PostgreSQL database using the psql command-line tool or a graphical interface like pgAdmin.
-- Use the following command to connect to the default PostgreSQL database
+5. **Data Export:**
+   - After applying filters, you can save the filtered data as CSV or Excel files.
+   - Use the "Save Data to CSV" and "Save Data to Excel" buttons to download the filtered data.
 
-    psql -U postgres
-    
-- Enter the password for the "postgres" user when prompted.
-
----
-
-### Step 3: Create a New Database:
-
-- Create a new database for the employee management system using the following command:
-
-    CREATE DATABASE employee_management;
-    
----
-
-### Step 4: Connect to the New Database:
-
-Connect to the newly created database using the following command:
-
-    \c employee_management
----
-
-### Step 5: Design the Database Schema:
-
-- Determine the tables you need based on the requirements.
-- For this example, let's create five tables: contract_projects, work_locations, educations, clearances, and employees.
-
-
-    -- Create the contract_projects table
-    
-    CREATE TABLE contract_projects (
-        
-        contract_project_id SERIAL PRIMARY KEY,
-        
-        name VARCHAR(255)
-    );
-
-    -- Create the work_locations table
-    
-    CREATE TABLE work_locations (
-        
-        work_location_id SERIAL PRIMARY KEY,
-       
-        name VARCHAR(255)
-    );
-
-    -- Create the educations table
-    
-    CREATE TABLE educations (
-        
-        education_id SERIAL PRIMARY KEY,
-        
-        level VARCHAR(255)
-    );
-
-    -- Create the clearances table
-    
-    CREATE TABLE clearances (
-    
-        clearance_id SERIAL PRIMARY KEY,
-        
-        level VARCHAR(255),
-        
-        status VARCHAR(255)
-    );
-
-    -- Create the employees table
-    
-    CREATE TABLE employees (
-            
-        name VARCHAR(255),
-        
-        contract_project_id INT,
-        
-        work_location_id INT,
-        
-        years_of_experience INT,
-        
-        education_id INT,
-        
-        clearance_id INT,
-        
-        origination_date DATE,
-        
-        reinvestigation_date DATE,
-        
-        FOREIGN KEY (contract_project_id) REFERENCES contract_projects (contract_project_id),
-        
-        FOREIGN KEY (work_location_id) REFERENCES work_locations (work_location_id),
-        
-        FOREIGN KEY (education_id) REFERENCES educations (education_id),
-        
-        FOREIGN KEY (clearance_id) REFERENCES clearances (clearance_id)
-    );
-    
-    -- Create the certifications table
-    
-        CREATE TABLE certifications (
-        certification_id SERIAL PRIMARY KEY,
-        name VARCHAR(255),
-        description VARCHAR(255)
-    );
-    
-    -- Create the unnormalize EmployeeManagementDB table
-    
-        CREATE TABLE EmployeeManagementDB (
-        employee_name VARCHAR(255),
-        contract_project_name VARCHAR(255),
-        work_location_name VARCHAR(255),
-        years_of_experience INT,
-        education_level VARCHAR(255),
-        clearance_level VARCHAR(255),
-        origination_date DATE,
-        reinvestigation_date DATE,
-        certification_name VARCHAR(255)
-    );
-
-    
+6. **Data Visualization:**
+   - The application provides basic visualizations like bar charts and pie charts to help you analyze employee data.
+   - Charts are updated based on the applied filters.
 
 ---
 
-## Usage
+## Page 2 - Employee Data Analysis
 
-After starting the application and visiting the specified URL, you will see the Employee Management interface. The application offers the following key functionalities:
+### Features:
 
-- **Add Employee:** Click on the "Add Employee" button to create a new employee record. Fill in the required fields, including contact information, job details, and department affiliation.
+- **Authentication:** Users are required to enter a username and password to access the application.
+- **Data Upload:** Users can upload employee data in CSV or Excel format.
+- **Data Filtering:** Users can filter employee data based on various criteria like contract project, work location, education level, clearance level, and more.
+- **Data Export:** Filtered data can be exported as CSV or Excel files.
+- **Data Visualization:** Basic data visualizations, including bar charts and pie charts, are provided to analyze employee data.
 
-- **View Employees:** Access the list of employees and their details by clicking on the "View Employees" button. This feature enables you to search, sort, and filter employee records, facilitating easy access to the information you need.
+### Instructions:
 
-- **Update Employee:** To modify an existing employee's information, select the desired employee from the list and click on the "Edit" button. Update the relevant fields and save your changes.
+1. **Authentication:**
+   - Enter your username and password to access the application. If you don't have credentials, contact your system administrator.
 
-- **Delete Employee:** If an employee is no longer with the company or their record needs to be removed, select the employee from the list and click on the "Delete" button. Confirm the deletion to remove the employee from the system.
+2. **Data Upload:**
+   - Use the "Upload CSV or Excel file with employee data" button to upload employee data.
+   - Make sure the uploaded file follows the expected column headers.
+
+3. **Data Filtering:**
+   - Use the sidebar filters to narrow down the employee dataset based on your criteria.
+   - You can filter by contract project, work location, education level, clearance level, and more.
+   - You can also search for employees by name or supervisor name.
+
+4. **Data Export:**
+   - After applying filters, you can save the filtered data as CSV or Excel files.
+   - Use the "Save Data to CSV" and "Save Data to Excel" buttons to download the filtered data.
+
+5. **Data Visualization:**
+   - The application provides basic visualizations like bar charts and pie charts to help you analyze employee data.
+   - Charts are updated based on the applied filters.
 
 ---
 
-## Features
-
-
-The Employee Management application offers the following powerful features:
-
-- **User-Friendly Interface:** The application boasts an intuitive and user-friendly interface, making it easy for HR professionals, managers, and administrators to navigate and utilize its functionalities.
-
-- **Secure Authentication:** Protect employee data with secure authentication mechanisms. Users can log in securely using their credentials to ensure only authorized personnel can access and manage employee information.
-
-- **Role-Based Access Control:** Assign different roles to users based on their responsibilities and grant access accordingly. Control the level of access and privileges for different user types, ensuring data confidentiality and integrity.
-
-- **Search and Filter:** Seamlessly search, sort, and filter employee records based on various criteria, such as name, department, position, and more. Quickly locate specific employees
+**Note:** If you encounter any issues or have questions about using this application, please contact your system administrator.
 
 ---
 
-## Contributing
+*This Streamlit application was created for Iberia Advisory.*
 
-Contributions are welcome! If you find any issues or have suggestions for improvements, please open an issue or submit a pull request. Here are the steps to contribute:
 
 1. Fork the repository.
 2. Create a new branch: `git checkout -b my-feature-branch`
@@ -206,3 +108,172 @@ Contributions are welcome! If you find any issues or have suggestions for improv
 5. Open a pull request in this repository.
 
 Please ensure that your contributions adhere to the project's coding standards and follow the existing patterns.
+](https://iberiaemployeedatabase.streamlit.app/
+
+# Iberia Employee Management
+
+Iberia Employee Management is a comprehensive web application designed to simplify the management of employee records. It provides a robust set of features for creating, viewing, and updating employee information, making it an ideal solution for businesses and organizations of all sizes.
+
+## Table of Contents
+
+- [Introduction](#introduction)
+- [Features](#features)
+- [Getting Started](#getting-started)
+  - [Installation](#installation)
+  - [Authentication](#authentication)
+- [Employee Data Management](#employee-data-management)
+  - [Data Upload](#data-upload)
+  - [Data Entry](#data-entry)
+  - [Data Filtering](#data-filtering)
+  - [Data Export](#data-export)
+  - [Data Visualization](#data-visualization)
+- [Customization](#customization)
+- [Support and Feedback](#support-and-feedback)
+
+
+## Introduction
+
+Managing employee data efficiently is crucial. This application aims to streamline the process by offering an intuitive user interface and powerful functionality. With Iberia's Employee Management tool, you can effortlessly keep track of employee details, such as contact information, job roles, departments, and more.
+
+## Features
+
+Iberia Employee Management offers the following key features:
+
+- **Authentication:** Secure access to the application with username and password authentication.
+
+## Getting Started
+
+### Installation
+
+To get started with Iberia Employee Management, follow these steps:
+
+1. Clone this repository to your local machine.
+
+2. Install the required Python packages by running the following command:
+
+       pip install -r requirements.txt
+
+3. Start the Streamlit application by running:
+
+        streamlit run app.py
+        
+### Authentication
+
+Upon launching the application, you will be prompted to enter your username and password. If you don't have credentials, please contact your system administrator.
+
+## Employee Data Management
+
+## Data Upload
+
+Use the "Upload CSV or Excel file with employee data" button to upload employee data. Ensure that the uploaded file follows the expected column headers.
+
+### Data Entry
+
+You can add new employees by filling out the input fields under "Add New Employee" and clicking the "Add Employee" button.
+
+### Data Filtering
+
+Use the sidebar filters to narrow down the employee dataset based on your criteria. You can filter by contract project, work location, education level, clearance level, and more. You can also search for employees by name or supervisor name.
+
+### Data Export
+
+After applying filters, you can save the filtered data as CSV or Excel files. Use the "Save Data to CSV" and "Save Data to Excel" buttons to download the filtered data.
+
+### Data Visualization
+
+The application provides basic visualizations like bar charts and pie charts to help you analyze employee data. Charts are updated based on the applied filters.
+
+
+
+### Support and Feedback
+
+If you encounter any issues or have questions about using this application, please contact Richie Garafola RGarafola@iberiaadvisory.com
+
+---
+---
+
+*This Streamlit application was created for Iberia Advisory.*)https://iberiaemployeedatabase.streamlit.app/
+
+# Iberia Employee Management
+
+Iberia Employee Management is a comprehensive web application designed to simplify the management of employee records. It provides a robust set of features for creating, viewing, and updating employee information, making it an ideal solution for businesses and organizations of all sizes.
+
+## Table of Contents
+
+- [Introduction](#introduction)
+- [Features](#features)
+- [Getting Started](#getting-started)
+  - [Installation](#installation)
+  - [Authentication](#authentication)
+- [Employee Data Management](#employee-data-management)
+  - [Data Upload](#data-upload)
+  - [Data Entry](#data-entry)
+  - [Data Filtering](#data-filtering)
+  - [Data Export](#data-export)
+  - [Data Visualization](#data-visualization)
+- [Customization](#customization)
+- [Support and Feedback](#support-and-feedback)
+
+
+## Introduction
+
+Managing employee data efficiently is crucial. This application aims to streamline the process by offering an intuitive user interface and powerful functionality. With Iberia's Employee Management tool, you can effortlessly keep track of employee details, such as contact information, job roles, departments, and more.
+
+## Features
+
+Iberia Employee Management offers the following key features:
+
+- **Authentication:** Secure access to the application with username and password authentication.
+
+## Getting Started
+
+### Installation
+
+To get started with Iberia Employee Management, follow these steps:
+
+1. Clone this repository to your local machine.
+
+2. Install the required Python packages by running the following command:
+
+       pip install -r requirements.txt
+
+3. Start the Streamlit application by running:
+
+        streamlit run app.py
+        
+### Authentication
+
+Upon launching the application, you will be prompted to enter your username and password. If you don't have credentials, please contact your system administrator.
+
+## Employee Data Management
+
+## Data Upload
+
+Use the "Upload CSV or Excel file with employee data" button to upload employee data. Ensure that the uploaded file follows the expected column headers.
+
+### Data Entry
+
+You can add new employees by filling out the input fields under "Add New Employee" and clicking the "Add Employee" button.
+
+### Data Filtering
+
+Use the sidebar filters to narrow down the employee dataset based on your criteria. You can filter by contract project, work location, education level, clearance level, and more. You can also search for employees by name or supervisor name.
+
+### Data Export
+
+After applying filters, you can save the filtered data as CSV or Excel files. Use the "Save Data to CSV" and "Save Data to Excel" buttons to download the filtered data.
+
+### Data Visualization
+
+The application provides basic visualizations like bar charts and pie charts to help you analyze employee data. Charts are updated based on the applied filters.
+
+
+
+### Support and Feedback
+
+If you encounter any issues or have questions about using this application, please contact Richie Garafola RGarafola@iberiaadvisory.com
+
+---
+---
+
+*This Streamlit application was created for Iberia Advisory.*
