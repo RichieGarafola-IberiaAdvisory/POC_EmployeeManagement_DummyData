@@ -7,7 +7,7 @@ from io import BytesIO
 
 # Set the page configuration for the Streamlit application, including the title and icon.
 st.set_page_config(
-    page_title="Employee Management Database",
+    page_title="Iberia Advisory New Employee",
     page_icon="📊",
     layout="wide"
 )
