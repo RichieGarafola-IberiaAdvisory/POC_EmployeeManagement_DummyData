@@ -114,9 +114,9 @@ if check_password():
     # Checkbox for termination status
     terminated = st.checkbox('Terminated')
     if terminated:
-        termination_date = st.date_input('Termination Date')
+        terminate_date = st.date_input('Termination Date')
     else:
-        termination_date = "NA"
+        terminate_date = "NA"
     
     veterans = st.selectbox('Veterans', ["NA", "Army", "Navy", "Air Force", "Marines", "Coast Guard"])
     supervisor = st.text_input('Supervisor')
@@ -153,7 +153,7 @@ if check_password():
             'Certification Name': certification_name,
             'HubZone': hubzone
         }
-        new_employee_df = pd.DataFrame([new_employee], columns=employees_df.columns)
+        new_employee_df = pd.DataFrame([new_employee], columns=st.session_state.employees_df.columns)
         
         # Debug: Print the new employee data
         st.write("New Employee Data:")
